@@ -49,7 +49,7 @@ function generic_lufact!{T,Pivot}(A::StridedMatrix{T}, ::Type{Val{Pivot}} = Val{
                 end
             end
             ipiv[k] = kp
-            if A[kp,k] != 0
+            if A[kp,k] != zero(T)
                 if k != kp
                     # Interchange
                     for i = 1:n

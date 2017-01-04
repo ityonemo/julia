@@ -892,10 +892,10 @@ julia> istriu(b)
 true
 ```
 """
-function istriu(A::AbstractMatrix)
+function istriu{T}(A::AbstractMatrix{T})
     m, n = size(A)
     for j = 1:min(n,m-1), i = j+1:m
-        if A[i,j] != 0
+        if A[i,j] != zero(T)
             return false
         end
     end
@@ -927,10 +927,10 @@ julia> istril(b)
 true
 ```
 """
-function istril(A::AbstractMatrix)
+function istril{T}(A::AbstractMatrix{T})
     m, n = size(A)
     for j = 2:n, i = 1:min(j-1,m)
-        if A[i,j] != 0
+        if A[i,j] != zero(T)
             return false
         end
     end
